@@ -1,0 +1,1022 @@
+/* ============================================ */
+/* -------- Developed By : Shaikh Minhaj ------ */
+/* ============================================ */
+/*  ---------------------------------------------------  */
+/* =============== Import URL's =============== */
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:400,700);
+@import url(https://fonts.googleapis.com/css?family=Raleway&display=swap);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css);
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap);
+/* ============================================ */
+/*  ---------------------------------------------------  */
+/* =========== CSS General Tags =============== */
+
+body {
+    font-family: sans-serif;
+    background: linear-gradient(-45deg, #ededff, #fcf1ff, #fff1fd, #f0fcff);
+    background-size: 1000% 1000%;
+    animation: gradient 15s ease infinite;
+    height: 300vh;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+p {
+    font-size: medium;
+    color: rgb(0, 0, 0);
+    font-family: sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #28002b;
+}
+
+a {
+    color: #31003b;
+    text-decoration: none;
+    transition: all 0.5s ease-in-out;
+}
+
+a:hover {
+    color: #912bff;
+    text-decoration: none;
+    transition: all 0.5s ease-in-out;
+}
+
+/* =========== End CSS General Tags =============== */
+/*  ---------------------------------------------------  */
+/* =========== CSS Preloader Tags =============== */
+
+
+
+/* =========== End CSS Preloader Tags =============== */
+/*  ---------------------------------------------------  */
+/* =========== CSS Scroll bar Tags =============== */
+
+
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-button {
+    width: 2px;
+    height: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ae00ff;
+    border: 27px none #d44040;
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ff00f7;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: #953efe;
+}
+
+::-webkit-scrollbar-track {
+    background: #ffffff;
+    border: 5px none #0a12ff;
+    border-radius: 58px;
+}
+
+::-webkit-scrollbar-track:hover {
+    background: #fbebff;
+}
+
+::-webkit-scrollbar-track:active {
+    background: #e0ccff;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+
+/* =========== End CSS Scroll bar Tags =============== */
+/*  ---------------------------------------------------  */
+/* =========== CSS Social Icons Tags =============== */
+
+ul.social-network {
+    list-style: none;
+    display: inline;
+    margin-left: 0 !important;
+    padding: 0;
+}
+
+ul.social-network li {
+    display: inline;
+    margin: 0 5px;
+}
+
+.social-network a.icoRss:hover {
+    background-color: #F56505;
+}
+
+.social-network a.icoFacebook:hover {
+    background-color: #3B5998;
+}
+
+.social-network a.icoTwitter:hover {
+    background-color: #33ccff;
+}
+
+.social-network a.icoGoogle:hover {
+    background-color: #BD3518;
+}
+
+.social-network a.icoVimeo:hover {
+    background-color: #0590B8;
+}
+
+.social-network a.icoLinkedin:hover {
+    background-color: #007bb7;
+}
+
+.social-network a.icogithub:hover {
+    background-color: #000000;
+}
+
+.social-network a.icoinstagram:hover {
+    background-color: rgb(255, 0, 162);
+}
+
+.social-network a.icoRss:hover i,
+.social-network a.icogithub:hover i,
+.social-network a.icoinstagram:hover i,
+.social-network a.icoFacebook:hover i,
+.social-network a.icoTwitter:hover i,
+.social-network a.icoGoogle:hover i,
+.social-network a.icoVimeo:hover i,
+.social-network a.icoLinkedin:hover i {
+    color: #fff;
+}
+
+a.socialIcon:hover,
+.socialHoverClass {
+    color: #44BCDD;
+}
+
+.social-circle li a {
+    display: inline-block;
+    position: relative;
+    margin: 0 auto 0 auto;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+}
+
+.social-circle li i {
+    margin: 0;
+    line-height: 50px;
+    text-align: center;
+}
+
+.social-circle li a:hover i,
+.triggeredHover {
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -ms--transform: rotate(360deg);
+    transform: rotate(360deg);
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.social-circle i {
+    color: rgb(27, 0, 40);
+    -webkit-transition: all 0.8s;
+    -moz-transition: all 0.8s;
+    -o-transition: all 0.8s;
+    -ms-transition: all 0.8s;
+    transition: all 0.8s;
+}
+
+/* =========== End CSS Social Icons Tags =============== */
+/*  ---------------------------------------------------  */
+/* =========== CSS Navbar Tags =============== */
+
+
+.nav__link a {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+/* nav styles */
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 13px;
+    background-color: rgba(255, 255, 255, 0);
+    text-decoration: none;
+}
+
+.logo {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 1.4rem;
+    color: rgb(0, 0, 0);
+    padding-left: 30px;
+    text-shadow: 2px 3px 3px rgba(93, 0, 255, 0.425);
+    text-decoration: none;
+}
+
+.hamburger {
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+.hamburger .line {
+    display: block;
+    width: 40px;
+    height: 5px;
+    margin-bottom: 10px;
+    background-color: black;
+}
+
+.nav__link {
+    width: 94%;
+    top: 5rem;
+    left: 18px;
+    background-color: rgb(250, 240, 255);
+    text-decoration: none;
+}
+
+.nav__link a {
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    text-decoration: none;
+}
+
+.hide {
+    display: none;
+}
+
+.nav__link a {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.nav__link a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    transition: color 1s;
+}
+
+.nav__link a::after {
+    content: '';
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    transition: width .5s;
+}
+
+.nav__link a:hover {
+    color: rgb(140, 0, 135);
+    text-shadow: 4px 4px 30px rgb(200, 0, 255);
+}
+
+.logo:hover {
+    color: rgb(59, 0, 81);
+    text-decoration: none;
+    transition: width .5s;
+}
+
+.nav__link a:hover::after {
+    width: 100%;
+    background-color: rgb(156, 0, 183);
+}
+
+
+@media screen and (min-width: 600px) {
+    .nav__link {
+        display: block;
+        position: static;
+        width: auto;
+        margin-right: 20px;
+        background: none;
+    }
+
+    .nav__link a {
+        display: inline-block;
+        padding: 15px 20px;
+    }
+
+    .hamburger {
+        display: none;
+    }
+}
+
+/* =========== End CSS Navbar Tags =============== */
+/*  ---------------------------------------------------  */
+/* =========== CSS Home Tags =================== */
+
+.hereos {
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 10px;
+    margin-left: 55px;
+    margin-right: 50px;
+}
+
+button {
+    margin: 20px;
+}
+
+.custom-btn {
+    width: 160px;
+    height: 50px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+        7px 7px 20px 0px rgba(0, 0, 0, .1),
+        4px 4px 5px 0px rgba(0, 0, 0, .1);
+    outline: none;
+}
+
+.btn-5 {
+    width: 170px;
+    height: 55px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+    color: white;
+    background: linear-gradient(45deg, rgb(250, 204, 255) 0%, rgb(218, 208, 255) 100%);
+}
+
+.btn-5:hover {
+    color: #ea00ff;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+}
+
+.btn-5:before,
+.btn-5:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 3px;
+    width: 0;
+    border: none;
+    background: linear-gradient(90deg, rgb(230, 0, 255) 0%, rgb(60, 0, 255) 100%);
+    box-shadow:
+        -1px -1px 5px 0px #fff,
+        7px 7px 20px 0px #0003,
+        4px 4px 5px 0px #0002;
+    transition: 400ms ease all;
+}
+
+.btn-5:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+    border: none;
+}
+
+.btn-5:hover:before,
+.btn-5:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
+    border: none;
+}
+
+.floating {
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    margin-top: -10px;
+}
+
+@keyframes floating {
+    from {
+        transform: translate(0, 0px);
+    }
+
+    65% {
+        transform: translate(0, 15px);
+    }
+
+    to {
+        transform: translate(0, -0px);
+    }
+}
+
+.ityped {
+    color: white;
+    font-size: 50px;
+    font-family: monospace;
+    color: rgb(166, 0, 255);
+}
+
+/* =========== End CSS Home Tags ================ */
+/* ----------------------------------------------------  */
+/* =========== CSS About Tags =============== */
+
+
+
+
+
+
+
+/* =========== End CSS About Tags =============== */
+/*  ---------------------------------------------------  */
+/* =========== CSS Skills Tags =============== */
+
+
+::selection {
+    color: #fff;
+    background: #6665ee;
+}
+
+.skill-bars .bar {
+    margin: 20px 0;
+}
+
+.skill-bars .bar:first-child {
+    margin-top: 0px;
+}
+
+.skill-bars .bar .info {
+    margin-bottom: 5px;
+}
+
+.skill-bars .bar .info span {
+    font-weight: 500;
+    font-size: 17px;
+    opacity: 0;
+    animation: showText 0.8s 2s linear forwards;
+}
+
+@keyframes showText {
+    100% {
+        opacity: 1;
+    }
+}
+
+.skill-bars .bar .progress-line {
+    height: 10px;
+    width: 100%;
+    background: #ffffff;
+    position: relative;
+    transform: scaleX(0);
+    transform-origin: left;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05),
+        0 1px rgba(255, 255, 255, 0.8);
+    animation: animate 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+}
+
+@keyframes animate {
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+.bar .progress-line span {
+    height: 100%;
+    position: absolute;
+    border-radius: 10px;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: linear-gradient(to right, rgb(215, 0, 215), rgb(70, 0, 132));
+    animation: animate 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+}
+
+.bar .progress-line.html span {
+    width: 90%;
+}
+
+.bar .progress-line.css span {
+    width: 85%;
+}
+
+.bar .progress-line.javascript span {
+    width: 65%;
+}
+
+.bar .progress-line.bootstrap span {
+    width: 90%;
+}
+
+.bar .progress-line.reactjs span {
+    width: 80%;
+}
+
+.bar .progress-line.java span {
+    width: 90%;
+}
+
+.bar .progress-line.sf span {
+    width: 75%;
+}
+
+.bar .progress-line.sb span {
+    width: 75%;
+}
+
+.bar .progress-line.hb span {
+    width: 70%;
+}
+
+.bar .progress-line.rws span {
+    width: 60%;
+}
+
+.bar .progress-line.php span {
+    width: 70%;
+}
+
+.bar .progress-line.python span {
+    width: 65%;
+}
+
+.bar .progress-line.mysql span {
+    width: 70%;
+}
+
+.bar .progress-line.fig span {
+    width: 65%;
+}
+
+.bar .progress-line.ps span {
+    width: 85%;
+}
+
+.bar .progress-line.can span {
+    width: 90%;
+}
+
+.progress-line span::before {
+    position: absolute;
+    content: "";
+    top: -10px;
+    right: 0;
+    height: 0;
+    width: 0;
+    border: 7px solid transparent;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    border-top-color: #000;
+    opacity: 0;
+    animation: showText2 0.5s 1.5s linear forwards;
+}
+
+.progress-line span::after {
+    position: absolute;
+    top: -28px;
+    right: 0;
+    font-weight: 500;
+    background: #000;
+    color: #fff;
+    padding: 1px 8px;
+    font-size: 12px;
+    border-radius: 3px;
+    opacity: 0;
+    animation: showText2 0.5s 1.5s linear forwards;
+}
+
+@keyframes showText2 {
+    100% {
+        opacity: 1;
+    }
+}
+
+
+:root {
+    --container-width: 800px;
+    --body-bg: #c490d1;
+    --body-color: #1a1a1a;
+    --collapse-bg: #f6e5ff;
+    --collapse-color: #1a1a1a;
+    --collapse-line-color: #ffffff;
+    --collapse-icon-color: #b8336a;
+    --collapse-box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+        rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+details {
+    background: var(--collapse-bg);
+    color: var(--collapse-color);
+    border-radius: 8px;
+    margin-bottom: 24px;
+    box-shadow: var(--collapse-box-shadow);
+}
+
+summary {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+summary,
+.details-info {
+    padding: 2rem;
+}
+
+.details-info {
+    border-top: 2px solid var(--collapse-line-color);
+    border-color: rgb(135, 0, 150);
+}
+
+summary .icon {
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    transition: transform 0.36s;
+    color: black;
+}
+
+details[open] summary .icon {
+    transform: rotate(360deg);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+.details-info img {
+    display: block;
+    max-width: 100%;
+    margin: 0 0 24px 0;
+}
+
+.details-info h2 {
+    margin: 0 0 8px 0;
+    font-family: "Merriweather", serif;
+    font-size: 1.5rem;
+}
+
+.details-info a {
+    color: darkorange;
+}
+
+.container_s {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 20px;
+}
+
+@keyframes growAndFadeIn {
+    0% {
+        font-size: 0;
+        opacity: 0;
+    }
+
+    90% {
+        font-size: 1em;
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* =========== End CSS Skills Tags =============== */
+/*  ---------------------------------------------------  */
+/* =========== CSS Portfolio Tags =============== */
+
+.row {
+    margin: 15px;
+}
+
+.h-txt-p {
+    text-align: center;
+    font-weight: bold;
+    padding: 20px;
+    margin: 20px;
+    font-size: 45px;
+    color: #1b0022;
+}
+
+.gallery-img-all {
+    max-width: 100%;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    height: auto;
+    transform: scale(1);
+}
+
+.gallery-img-all:hover {
+    transform: scale(1.1);
+}
+
+
+/* =========== End CSS Portfolio Tags =============== */
+/*  ---------------------------------------------------  */
+/* =========== CSS Services Tags =============== */
+
+.section-services {
+    font-family: "Poppins", sans-serif;
+    color: #202020;
+    padding-top: 115px;
+    padding-bottom: 120px;
+}
+
+.section-services .header-section {
+    margin-bottom: 34px;
+}
+
+.section-services .header-section .title {
+    position: relative;
+    padding-bottom: 14px;
+    margin-bottom: 25px;
+    font-weight: 700;
+    font-size: 32px;
+}
+
+.section-services .header-section .title:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    border-radius: 3px;
+}
+
+.section-services .header-section .title:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(30px);
+    width: 10px;
+    height: 3px;
+    background-color: #504f93;
+    border-radius: 3px;
+}
+
+.section-services .header-section .description {
+    font-size: 14px;
+    color: #282828;
+}
+
+.section-services .single-service {
+    position: relative;
+    margin-top: 30px;
+    background-color: rgb(250, 240, 255);
+    border-radius: 10px;
+    padding: 40px 30px;
+    overflow: hidden;
+    box-shadow: 1px 1px 8px rgba(40, 0, 35, 0.089);
+}
+
+.section-services .single-service .content {
+    position: relative;
+    z-index: 20;
+}
+
+.section-services .single-service .circle-before {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    transform: translate(40%, -40%);
+    width: 150px;
+    height: 150px;
+    background-color: #c300ff;
+    border: 6px solid #504f93;
+    border-radius: 50%;
+    opacity: 0.5;
+    z-index: 10;
+    transition: all .6s;
+}
+
+.section-services .single-service:hover .circle-before {
+    width: 100%;
+    height: 100%;
+    transform: none;
+    border: 0;
+    border-radius: 0;
+    opacity: 1;
+}
+
+.section-services .single-service .icon {
+    display: inline-block;
+    margin-bottom: 26px;
+    width: 70px;
+    height: 70px;
+    background-color: #c300ff;
+    border-radius: 5px;
+    line-height: 70px;
+    text-align: center;
+    color: rgb(250, 240, 255);
+    font-size: 30px;
+    transition: all .3s;
+}
+
+.section-services .single-service:hover .icon {
+    background-color: rgb(250, 240, 255);
+    color: #c300ff;
+}
+
+.section-services .single-service .title {
+    margin-bottom: 18px;
+    font-weight: 700;
+    font-size: 23px;
+    transition: color .3s;
+}
+
+.section-services .single-service:hover .title {
+    color: rgb(250, 240, 255);
+}
+
+.section-services .single-service .description {
+    margin-bottom: 20px;
+    font-size: 14px;
+    transition: color .3s;
+}
+
+.section-services .single-service:hover .description {
+    color: rgb(250, 240, 255);
+}
+
+.section-services .single-service a {
+    position: relative;
+    font-size: 18px;
+    color: #202020;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color .3s;
+}
+
+.section-services .single-service:hover a {
+    color: rgb(250, 240, 255);
+}
+
+.section-services .single-service a:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: rgb(250, 240, 255);
+    transition: background-color .3s;
+}
+
+.section-services .single-service:hover a:after {
+    background-color: rgb(250, 240, 255);
+}
+
+
+
+/* =========== End CSS Services Tags =============== */
+/*  ---------------------------------------------------  */
+/* =========== CSS Contact Tags =============== */
+
+
+
+
+/* =========== End CSS Contact Tags =============== */
+/*  ---------------------------------------------------  */
+/* =========== CSS Footer Tags =============== */
+
+
+
+/* =========== End CSS Footer Tags =============== */
+/*  ---------------------------------------------------  */
+/* =========== CSS Counter Tags =============== */
+
+.count-area {
+    position: relative;
+    background: #fbeaff00;
+    padding: 100px 0;
+    text-align: center;
+    color: rgb(0, 0, 0);
+}
+
+.count-area-content {
+    margin-top: 30px;
+}
+
+.count-area i {
+    font-size: 48px;
+}
+
+.count-digit {
+    margin: 20px 0px;
+    color: linear-gradient(to right, rgb(110, 0, 110), rgb(58, 0, 108));
+    font-weight: 700;
+    font-size: 50px;
+    transition: ease 0.5s;
+}
+
+.count-digit:hover {
+    color: linear-gradient(to right, rgb(11, 0, 95), rgb(90, 2, 95));
+    transform: scale(0.9);
+}
+
+.count-title {
+    font-size: 20px;
+}
+
+.stats-icon {
+    color: rgb(67, 0, 103);
+}
+
+.stats-icon:hover {
+    color: #cf00c5;
+}
+
+
+.count-title {
+    color: rgb(67, 0, 103);
+    transition: ease 0.5s;
+}
+
+.count-title:hover {
+    font-size: 25px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(122, 0, 156);
+    transform: scale(0.9);
+}
+
+.stats-text {
+    font-size: 15px;
+    font-weight: normal;
+    margin-top: 15px;
+    margin-bottom: 0;
+    text-align: center;
+    color: rgb(67, 0, 103);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.stats-line-black {
+    margin: 12px auto 0;
+    width: 55px;
+    height: 2px;
+    background-color: rgb(0, 0, 0);
+}
+
+.stats-icon {
+    color: rgb(67, 0, 103);
+}
+
+@media (max-width: 992px) {
+    .counter {
+        margin-bottom: 40px;
+    }
+}
+
+/* =========== End CSS Counter Tags =============== */
+/*  ---------------------------------------------------  */
