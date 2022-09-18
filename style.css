@@ -66,6 +66,7 @@ a:hover {
 
 
 
+
 /* =========== End CSS Preloader Tags =============== */
 /*  ---------------------------------------------------  */
 /* =========== CSS Scroll bar Tags =============== */
@@ -112,7 +113,6 @@ a:hover {
 ::-webkit-scrollbar-corner {
     background: transparent;
 }
-
 
 /* =========== End CSS Scroll bar Tags =============== */
 /*  ---------------------------------------------------  */
@@ -464,8 +464,6 @@ button {
 
 
 
-
-
 /* =========== End CSS About Tags =============== */
 /*  ---------------------------------------------------  */
 /* =========== CSS Skills Tags =============== */
@@ -755,7 +753,6 @@ details[open] summary .icon {
     transform: scale(1.1);
 }
 
-
 /* =========== End CSS Portfolio Tags =============== */
 /*  ---------------------------------------------------  */
 /* =========== CSS Services Tags =============== */
@@ -913,8 +910,6 @@ details[open] summary .icon {
 .section-services .single-service:hover a:after {
     background-color: rgb(250, 240, 255);
 }
-
-
 
 /* =========== End CSS Services Tags =============== */
 /*  ---------------------------------------------------  */
