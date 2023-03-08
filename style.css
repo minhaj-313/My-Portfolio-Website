@@ -573,7 +573,7 @@ button {
 }
 
 .bar .progress-line.python span {
-    width: 65%;
+    width: 75%;
 }
 
 .bar .progress-line.mysql span {
@@ -581,7 +581,7 @@ button {
 }
 
 .bar .progress-line.fig span {
-    width: 65%;
+    width: 50%;
 }
 
 .bar .progress-line.ps span {
@@ -589,7 +589,7 @@ button {
 }
 
 .bar .progress-line.can span {
-    width: 90%;
+    width: 80%;
 }
 
 .progress-line span::before {
