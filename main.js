@@ -110,12 +110,27 @@ $(document).on("click", '[data-toggle="lightbox"]', function (event) {
 });
 
 
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzgpzi09Ee3vts0y1Z1H7Z3gAg-ITJTX7Dw5ah5QjOF9G2dte1jPlBSuaAkCs5oUqcC-w/exec'
-const form = document.forms['google-sheet']
+// contact form js
 
-form.addEventListener('submit', e => {
-    e.preventDefault()
-    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-        .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
-        .catch(error => console.error('Error!', error.message))
-})
+const form = document.querySelector('#contact-form');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault(); // prevent form from submitting normally
+
+  const formData = new FormData(form); // get form data
+  const xhr = new XMLHttpRequest(); // create new XMLHttpRequest object
+  
+  xhr.open('POST', 'send_email.php'); // set endpoint
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  
+  xhr.onload = function() { // handle response from server
+    if (xhr.status === 200) {
+      alert('Message sent successfully!');
+      form.reset(); // clear form
+    } else {
+      alert('Error sending message. Please try again later.');
+    }
+  };
+  
+  xhr.send(new URLSearchParams(formData).toString()); // send data as URL encoded string
+});
