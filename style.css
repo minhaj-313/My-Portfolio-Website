@@ -222,7 +222,7 @@ a.socialIcon:hover,
 /* =========== End CSS Social Icons Tags =============== */
 /*  ---------------------------------------------------  */
 /* =========== CSS Navbar Tags =============== */
-                                               
+
 
 .nav__link a {
     text-decoration: none;
@@ -265,11 +265,16 @@ a.socialIcon:hover,
 }
 
 .nav__link {
-    width: 94%;
+    width: 100%;
     top: 5rem;
     left: 18px;
-    background-color: rgb(250, 240, 255);
+    background-color: rgb(246 227 255);
     text-decoration: none;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .nav__link a {
