@@ -690,72 +690,71 @@
     <!-- ================= End Services ==================== -->
     <!-- ------------------------------------------------------------ -->
     <!-- ================= Contact ==================== -->
-    <section class="text-violet-600 body-font relative" id="contact-s">
-        <div class="container px-5  mx-auto" data-aos="zoom-in-up">
-            <div class="flex flex-col text-center w-full mb-2">
-                <h1 class="sm:text-5xl text-2xl font-medium title-font mb-4 text-violet-900">Contact</h1>
-            </div>
-            <form method="POST" name="google-sheet" id="contact-form">
-                <div class="lg:w-1/2 md:w-2/3 mx-auto">
-                    <div class="flex flex-wrap -m-2">
-                        <div class="p-2 w-1/2">
-                            <div class="relative">
-                                <label for="name" class="leading-7 text-sm text-violet-600">Name</label>
-                                <input type="text" id="name" name="name" required
-                                    class="w-full bg-violet-100 bg-opacity-50 rounded border border-violet-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-violet-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                            </div>
+   <section class="text-violet-600 body-font relative" id="contact-s">
+    <div class="container px-5  mx-auto" data-aos="zoom-in-up">
+        <div class="flex flex-col text-center w-full mb-2">
+            <h1 class="sm:text-5xl text-2xl font-medium title-font mb-4 text-violet-900">Contact</h1>
+        </div>
+        <form method="POST" action="send_email.php" id="contact-form">
+            <div class="lg:w-1/2 md:w-2/3 mx-auto">
+                <div class="flex flex-wrap -m-2">
+                    <div class="p-2 w-1/2">
+                        <div class="relative">
+                            <label for="name" class="leading-7 text-sm text-violet-600">Name</label>
+                            <input type="text" id="name" name="name" required
+                                class="w-full bg-violet-100 bg-opacity-50 rounded border border-violet-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-violet-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
-                        <div class="p-2 w-1/2">
-                            <div class="relative">
-                                <label for="email" class="leading-7 text-sm text-violet-600">Email</label>
-                                <input type="email" id="email" name="email" required
-                                    class="w-full bg-violet-100 bg-opacity-50 rounded border border-violet-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-violet-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                            </div>
+                    </div>
+                    <div class="p-2 w-1/2">
+                        <div class="relative">
+                            <label for="email" class="leading-7 text-sm text-violet-600">Email</label>
+                            <input type="email" id="email" name="email" required
+                                class="w-full bg-violet-100 bg-opacity-50 rounded border border-violet-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-violet-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
-                        <div class="p-2 w-full">
-                            <div class="relative">
-                                <label for="message" class="leading-7 text-sm text-violet-600">Message</label>
-                                <textarea id="message" name="message" required
-                                    class="w-full bg-violet-100 bg-opacity-50 rounded border border-violet-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-violet-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
-                            </div>
+                    </div>
+                    <div class="p-2 w-full">
+                        <div class="relative">
+                            <label for="message" class="leading-7 text-sm text-violet-600">Message</label>
+                            <textarea id="message" name="message" required
+                                class="w-full bg-violet-100 bg-opacity-50 rounded border border-violet-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-violet-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                         </div>
-                        <div class="p-2 w-full" style="text-align: center!important;">
-                            <button type="submit" class="btn  btn-lg px-6 me-md-2 custom-btn btn-5 submit"
-                                value="submit">SUBMIT</button>
-                        </div>
-                        <div class="p-2 w-full pt-8 mt-8 border-t border-violet-200 text-center">
-                            <p class="leading-normal my-5">© Copyright <a href="https://github.com/minhaj-313"
-                                    style="  text-decoration: none;">minhaj-313</a>. All Rights Reserved <br>
-                                Designed & Developed by <a href="https://www.linkedin.com/in/shaikh-minhaj-developer/"
-                                    style="  text-decoration: none;">Shaikh Minhaj</a>
-                            </p>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-2 mt-4">
-                                <div class="col-md-12">
-                                    <ul class="social-network social-circle">
-                                        <li><a href="https://github.com/minhaj-313" class="icogithub" title="GITHUB"><i
-                                                    class="fa fa-github"></i></a>
-                                        </li>
-                                        <li><a href="https://www.linkedin.com/in/shaikh-minhaj-developer/" class="icoLinkedin"
-                                                title="Linkedin"><i class="fa fa-linkedin"></i></a>
-                                        </li>
-                                        <li><a href="https://twitter.com/minhaj_313" class="icoTwitter"
-                                                title="Twitter"><i class="fa fa-twitter"></i></a>
-                                        </li>
-                                        <li><a href="https://www.instagram.com/minhaj_313" class="icoinstagram"
-                                                title="Instagram"><i class="fa fa-instagram"></i></a></li>
-                                        <li><a href="https://www.facebook.com/minhaj.shaikh.5836711" class="icoFacebook"
-                                                title="Facebook"><i class="fa fa-facebook"></i></a>
-                                        </li>
-                                       
-                                    </ul>
-                                </div>
+                    </div>
+                    <div class="p-2 w-full" style="text-align: center!important;">
+                        <button type="submit" class="btn  btn-lg px-6 me-md-2 custom-btn btn-5 submit"
+                            value="submit">SUBMIT</button>
+                    </div>
+                    <div class="p-2 w-full pt-8 mt-8 border-t border-violet-200 text-center">
+                        <p class="leading-normal my-5">© All Rights Reserved <br>
+                            Designed & Developed by <a href="https://www.linkedin.com/in/shaikh-minhaj-developer/"
+                                style="  text-decoration: none;">Shaikh Minhaj</a>
+                        </p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-2 mt-4">
+                            <div class="col-md-12">
+                                <ul class="social-network social-circle">
+                                    <li><a href="https://github.com/minhaj-313" class="icogithub" title="GITHUB"><i
+                                                class="fa fa-github"></i></a>
+                                    </li>
+                                    <li><a href="https://www.linkedin.com/in/shaikh-minhaj-developer/" class="icoLinkedin"
+                                            title="Linkedin"><i class="fa fa-linkedin"></i></a>
+                                    </li>
+                                    <li><a href="https://twitter.com/minhaj_313" class="icoTwitter"
+                                            title="Twitter"><i class="fa fa-twitter"></i></a>
+                                    </li>
+                                    <li><a href="https://www.instagram.com/minhaj_313" class="icoinstagram"
+                                            title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="https://www.facebook.com/minhaj.shaikh.5836711" class="icoFacebook"
+                                            title="Facebook"><i class="fa fa-facebook"></i></a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
-    </section>
+            </div>
+        </form>
+    </div>
+</section>
+
 
     <!-- ================= End Contact ==================== -->
     <!-- ------------------------------------------------------------ -->
