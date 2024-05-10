@@ -533,68 +533,56 @@ button {
     animation: animate 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
 }
 
-.bar .progress-line.html span {
+.bar .progress-line.s95 span {
+    width: 95%;
+}
+
+.bar .progress-line.s90 span {
     width: 90%;
 }
 
-.bar .progress-line.css span {
+.bar .progress-line.s85 span {
     width: 85%;
 }
 
-.bar .progress-line.javascript span {
+.bar .progress-line.s80 span {
+    width: 80%;
+}
+
+.bar .progress-line.s75 span {
+    width: 75%;
+}
+
+.bar .progress-line.s70 span {
+    width: 70%;
+}
+
+.bar .progress-line.s65 a span {
     width: 65%;
 }
 
-.bar .progress-line.bootstrap span {
-    width: 90%;
-}
-
-.bar .progress-line.reactjs span {
-    width: 80%;
-}
-
-.bar .progress-line.java span {
-    width: 90%;
-}
-
-.bar .progress-line.sf span {
-    width: 75%;
-}
-
-.bar .progress-line.sb span {
-    width: 75%;
-}
-
-.bar .progress-line.hb span {
-    width: 70%;
-}
-
-.bar .progress-line.rws span {
+.bar .progress-line.s60 span {
     width: 60%;
 }
 
-.bar .progress-line.php span {
-    width: 70%;
+.bar .progress-line.s55 span {
+    width: 55%;
 }
 
-.bar .progress-line.python span {
-    width: 75%;
-}
-
-.bar .progress-line.mysql span {
-    width: 70%;
-}
-
-.bar .progress-line.fig span {
+.bar .progress-line.s50 span {
     width: 50%;
 }
 
-.bar .progress-line.ps span {
-    width: 85%;
+.bar .progress-line.s45 span {
+    width: 45%;
 }
 
-.bar .progress-line.can span {
-    width: 80%;
+.bar .progress-line.s40 span {
+    width: 40%;
+}
+
+.bar .progress-line.s100 hon span {
+    width: 100%;
 }
 
 .progress-line span::before {
