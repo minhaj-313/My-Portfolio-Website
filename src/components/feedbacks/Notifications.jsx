@@ -1,12 +1,12 @@
 import "./Notifications.scss"
 import React, {useEffect, useState} from 'react'
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
 import {Card, CardBody, CardHeader} from "react-bootstrap"
 import FaIcon from "/src/components/generic/FaIcon.jsx"
 import {useScheduler} from "/src/helpers/scheduler.js"
+import {useFeedbacks} from "/src/providers/FeedbacksProvider.jsx"
 
 function Notifications() {
-    const {displayingNotification, setDisplayingNotification} = useLayout()
+    const {displayingNotification, killNotification} = useFeedbacks()
     const scheduler = useScheduler()
     const schedulerTag = 'notifications'
 
@@ -28,7 +28,7 @@ function Notifications() {
         }, 4000, schedulerTag)
 
         scheduler.schedule(() => {
-            setDisplayingNotification(null)
+            killNotification()
         }, 4400, schedulerTag)
     }, [displayingNotification])
 
@@ -43,7 +43,7 @@ function Notifications() {
     }
 
     const _onCloseButton = () => {
-        setDisplayingNotification(null)
+        killNotification()
     }
 
     return (

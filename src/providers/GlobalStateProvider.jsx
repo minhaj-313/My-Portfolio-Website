@@ -1,18 +1,19 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 import {useData} from "/src/providers/DataProvider.jsx"
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
+import {useFeedbacks} from "/src/providers/FeedbacksProvider.jsx"
 
 const GlobalStateContext = createContext(null)
 export const useGlobalState = () => useContext(GlobalStateContext)
 
 export const GlobalStateProvider = ({children}) => {
     const {getSections, getCategories, getCategorySections} = useData()
-    const {showActivitySpinner, hideActivitySpinner, isMobileLayout} = useLayout()
+    const {showActivitySpinner, hideActivitySpinner} = useFeedbacks()
 
     const [activeSectionId, setActiveSectionId] = useState(null)
     const [lastSectionChangeTimespan, setLastSectionChangeTimespan] = useState(null)
     const [sectionChangingTimeoutId, setSectionChangingTimeoutId] = useState(-1)
     const [fixedNavigationEnabled, setFixedNavigationEnabled] = useState(true)
+    const [didRenderFirstSection, setDidRenderFirstSection] = useState(false)
 
     const sections = getSections()
     const categories = getCategories()
@@ -125,7 +126,9 @@ export const GlobalStateProvider = ({children}) => {
             isCategoryActive,
             getActiveCategory,
             fixedNavigationEnabled,
-            setFixedNavigationEnabled
+            setFixedNavigationEnabled,
+            didRenderFirstSection,
+            setDidRenderFirstSection
         }}>
             {activeSectionId && (
                 <>{children}</>

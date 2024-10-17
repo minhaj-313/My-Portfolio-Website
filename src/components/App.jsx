@@ -1,7 +1,6 @@
 import "/src/styles/app.scss"
 import React, {useEffect, useState} from 'react'
 import {useData} from "/src/providers/DataProvider.jsx"
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
 import Portfolio from "/src/components/Portfolio.jsx"
 import {AnimatedCursor} from "/src/components/feedbacks/AnimatedCursor"
 import ActivitySpinner from "/src/components/feedbacks/ActivitySpinner.jsx"
@@ -10,6 +9,7 @@ import YoutubeModal from "/src/components/modals/YoutubeModal.jsx"
 import GalleryModal from "/src/components/modals/GalleryModal.jsx"
 import Notifications from "/src/components/feedbacks/Notifications.jsx"
 import ConfirmationWindow from "/src/components/modals/ConfirmationWindow.jsx"
+import {useFeedbacks} from "/src/providers/FeedbacksProvider.jsx"
 
 function App() {
     const {listImagesForCache} = useData()
@@ -26,14 +26,16 @@ function App() {
 }
 
 function AppFeedbacks() {
+    const {listSpinnerActivities, isAnimatedCursorEnabled, displayingNotification, displayingYoutubeVideo, displayingGallery, pendingConfirmation} = useFeedbacks()
+
     return (
         <>
-            <ActivitySpinner />
-            <AnimatedCursor/>
-            <Notifications/>
-            <YoutubeModal/>
-            <GalleryModal/>
-            <ConfirmationWindow/>
+            {listSpinnerActivities() && (<ActivitySpinner/>)}
+            {isAnimatedCursorEnabled() && (<AnimatedCursor/>)}
+            {displayingNotification && (<Notifications/>)}
+            {displayingYoutubeVideo && (<YoutubeModal/>)}
+            {displayingGallery && (<GalleryModal/>)}
+            {pendingConfirmation && (<ConfirmationWindow/>)}
         </>
     )
 }

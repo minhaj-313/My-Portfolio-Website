@@ -5,14 +5,14 @@ import CircleAvatar from "/src/components/generic/CircleAvatar.jsx"
 import FaIcon from "/src/components/generic/FaIcon.jsx"
 import {useUtils} from "/src/helpers/utils.js"
 import CustomProgressBar from "/src/components/generic/CustomProgressBar.jsx"
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
 import Expandable from "/src/components/capabilities/Expandable.jsx"
 import "./ActivityList.scss"
+import {useWindow} from "/src/providers/WindowProvider.jsx"
 
 const utils = useUtils()
 
 function ActivityList({ items, storageId, colClass, maxItems, hideProgressBar, cascadeMargin }) {
-    const {currentTimeSpan} = useLayout()
+    const {currentTimeSpan} = useWindow()
     const [filteredItems, setFilteredItems] = useState([])
     const [renderedAt] = useState(currentTimeSpan)
 
@@ -138,12 +138,13 @@ function ActivityListInfoBlock({icon, text, shouldDisplayLargeText}) {
 
 
 function ActivityListItemWithProgress({ item, createdAt }) {
-    const [progressValue, setProgressValue] = useState(0)
-    const {currentTimeSpan, isMobileLayout} = useLayout()
+    const {currentTimeSpan, isBreakpoint} = useWindow()
+
+    const skipAnimation = utils.isTouchDevice() || !isBreakpoint('xl')
+    const [progressValue, setProgressValue] = useState(skipAnimation ? item.progress : 0)
 
     useEffect(() => {
-        if(utils.isTouchDevice()) {
-            setProgressValue(item.progress)
+        if(skipAnimation) {
             return
         }
 

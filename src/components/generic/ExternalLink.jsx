@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
 import {useLanguage} from "/src/providers/LanguageProvider.jsx"
 import {useUtils} from "/src/helpers/utils.js"
+import {useFeedbacks} from "/src/providers/FeedbacksProvider.jsx"
 
 function ExternalLink({href, className, children}) {
-    const {setPendingConfirmation} = useLayout()
+    const {showConfirmationDialog} = useFeedbacks()
     const {getString} = useLanguage()
     const utils = useUtils()
 
@@ -13,15 +13,15 @@ function ExternalLink({href, className, children}) {
             return
 
         e.preventDefault()
-        setPendingConfirmation({
-            title: getString('open_link'),
-            message: getString('leaving_site').replace('$url', utils.limitTextSize(href, 50)),
-            cancelLabel: getString('cancel'),
-            confirmLabel: getString('proceed'),
-            confirmationCallback: () => {
+        showConfirmationDialog(
+            getString('open_link'),
+            getString('leaving_site').replace('$url', utils.limitTextSize(href, 50)),
+            getString('cancel'),
+            getString('proceed'),
+            () => {
                 window.open(href, '_blank')
             }
-        })
+        )
     };
 
     return (

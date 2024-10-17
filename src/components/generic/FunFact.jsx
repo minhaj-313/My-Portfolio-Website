@@ -2,11 +2,11 @@ import "./FunFact.scss"
 import React from 'react'
 import CircleAvatar from "/src/components/generic/CircleAvatar.jsx"
 import {useUtils} from "/src/helpers/utils.js"
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
+import {useWindow} from "/src/providers/WindowProvider.jsx"
 
 function FunFact({ img, fallbackIcon, fallbackIconColors, title, info }) {
     const utils = useUtils()
-    const {getBreakpoint} = useLayout()
+    const {getBreakpoint} = useWindow()
 
     let size = 2
     if(getBreakpoint() === 'xl')

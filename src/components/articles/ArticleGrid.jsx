@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react'
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
 import Article from "/src/components/wrappers/Article.jsx"
 import InlineList from "/src/components/generic/InlineList.jsx"
 import InfoGrid from "/src/components/generic/InfoGrid.jsx"
 import {useParser} from "/src/helpers/parser.js"
 import Expandable from "/src/components/capabilities/Expandable.jsx"
 import {useLanguage} from "/src/providers/LanguageProvider.jsx"
+import {useWindow} from "/src/providers/WindowProvider.jsx"
 
 function ArticleGrid({ data }) {
-    const {isBreakpoint, isMobileLayout} = useLayout()
+    const {isBreakpoint, isMobileLayout} = useWindow()
     const {selectedLanguageId} = useLanguage()
     const parser = useParser()
 

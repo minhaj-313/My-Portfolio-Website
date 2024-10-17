@@ -2,15 +2,13 @@ import React, {useEffect, useState} from 'react'
 import {Col} from "react-bootstrap"
 import PaginationTools from "/src/components/generic/PaginationTools.jsx"
 import {useUtils} from "/src/helpers/utils.js"
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
 
 function Paginable({ children, items, storageId, onFilter, controlsClass, maxItemsPerPage, autoHide }) {
     const utils = useUtils()
-    const {scrollToTop} = useLayout()
 
     const [didLoadInitialState, setDidLoadInitialState] = useState(false)
-    const [currentPage, setCurrentPage] = useState( null)
-    const [lastPage, setLastPage] = useState( null)
+    const [currentPage, setCurrentPage] = useState(null)
+    const [lastPage, setLastPage] = useState(null)
 
     useEffect(() => {
         const lastPage = Math.ceil(items.length/maxItemsPerPage) - 1
@@ -38,7 +36,6 @@ function Paginable({ children, items, storageId, onFilter, controlsClass, maxIte
         targetPage = utils.clamp(targetPage || 0, 0, lastPage)
         setCurrentPage(targetPage)
         _flush(targetPage, true)
-        scrollToTop()
     }
 
     const _flush = (currentPage, saveState) => {

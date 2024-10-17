@@ -6,7 +6,6 @@ import BorderWrap from "/src/components/wrappers/BorderWrap.jsx"
 import Scrollable from "/src/components/capabilities/Scrollable.jsx"
 import {useLanguage} from "/src/providers/LanguageProvider.jsx"
 import {useUtils} from "/src/helpers/utils.js"
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
 
 import ArticleCards from "/src/components/articles/ArticleCards.jsx"
 import ArticleContactForm from "/src/components/articles/ArticleContactForm.jsx"
@@ -21,6 +20,7 @@ import ArticleTimeline from "/src/components/articles/ArticleTimeline.jsx"
 import FullScreenToggleButton from "/src/components/widgets/FullScreenToggleButton"
 import {useData} from "/src/providers/DataProvider.jsx"
 import FaIcon from "/src/components/generic/FaIcon.jsx"
+import {useWindow} from "/src/providers/WindowProvider.jsx"
 
 const TransitionClasses = {
     HIDDEN: 'section-transition-hidden',
@@ -46,8 +46,8 @@ const utils = useUtils()
 
 function Section({ section }) {
     const {getSettings} = useData()
-    const {isSectionActive} = useGlobalState()
-    const {isBreakpoint, isMobileLayout} = useLayout()
+    const {isSectionActive, didRenderFirstSection, setDidRenderFirstSection} = useGlobalState()
+    const {isBreakpoint, isMobileLayout} = useWindow()
     const [transitionClass, setTransitionClass] = useState(TransitionClasses.HIDDEN)
     const [timeoutId, setTimeoutId] = useState(-1)
 
@@ -71,11 +71,12 @@ function Section({ section }) {
         if(transitionClass === TransitionClasses.SHOWN)
             return
 
-        if(window.didRenderFirstSection) {
+        if(didRenderFirstSection) {
             setTransitionClass(TransitionClasses.SHOWING)
             _changeStateAfterTimeout(TransitionClasses.SHOWN, 30)
         }
         else {
+            setDidRenderFirstSection(true)
             setTransitionClass(TransitionClasses.SHOWN)
         }
     }
@@ -96,7 +97,6 @@ function Section({ section }) {
         }, timeInMilliseconds)
 
         setTimeoutId(id)
-        window.didRenderFirstSection = true
     }
 
     return (
@@ -131,7 +131,7 @@ function Section({ section }) {
 
 function SectionHeader({section}) {
     const {getTranslation} = useLanguage()
-    const {isBreakpoint} = useLayout()
+    const {isBreakpoint} = useWindow()
 
     let title = utils.parseJsonText(getTranslation(section.content["locales"], "title_long"))
     let prefix = utils.parseJsonText(getTranslation(section.content["locales"], "title_long_prefix", true))

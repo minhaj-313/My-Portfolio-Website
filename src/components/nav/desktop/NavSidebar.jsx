@@ -4,7 +4,6 @@ import Box from "/src/components/wrappers/Box.jsx"
 import {useUtils} from "/src/helpers/utils.js"
 import {useLanguage} from "/src/providers/LanguageProvider.jsx"
 import {useData} from "/src/providers/DataProvider.jsx"
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
 import {useTheme} from "/src/providers/ThemeProvider.jsx"
 import {useGlobalState} from "/src/providers/GlobalStateProvider.jsx"
 import ToolButton from "/src/components/generic/ToolButton.jsx"
@@ -14,6 +13,8 @@ import LanguagePicker from "/src/components/widgets/LanguagePicker.jsx"
 import ThemePicker from "/src/components/widgets/ThemePicker.jsx"
 import CursorToggleButton from "/src/components/widgets/CursorToggleButton.jsx"
 import NavLink from "/src/components/nav/desktop/NavLink.jsx"
+import {useWindow} from "/src/providers/WindowProvider.jsx"
+import {useFeedbacks} from "/src/providers/FeedbacksProvider.jsx"
 
 function NavSidebar() {
     const utils = useUtils()
@@ -21,7 +22,7 @@ function NavSidebar() {
     const [shrinkSelected, setShrinkSelected] = useState(false)
     const [canExpand, setCanExpand] = useState(true)
     const {getSections} = useData()
-    const {isBreakpoint} = useLayout()
+    const {isBreakpoint} = useWindow()
     const {getString} = useLanguage()
 
     const sections = getSections()
@@ -62,12 +63,12 @@ function NavSidebar() {
 function NavSidebarLinks({shouldShrink, sections}) {
     const {getTranslation} = useLanguage()
     const {isSectionActive, setActiveSection} = useGlobalState()
-    const {ongoingActivities} = useLayout()
+    const {isShowingSpinner} = useFeedbacks()
 
     const [selectedItemSectionId, setSelectedItemSectionId] = useState(null)
 
     const _isActive = (section) => {
-        if(ongoingActivities.length)
+        if(isShowingSpinner())
             return false
 
         if(selectedItemSectionId)
@@ -105,7 +106,7 @@ function NavSidebarLinks({shouldShrink, sections}) {
 function NavSidebarBottomMenu({shouldShrink}) {
     const {canChangeLanguage} = useLanguage()
     const {canChangeTheme} = useTheme()
-    const {canHaveAnimatedCursor} = useLayout()
+    const {isAnimatedCursorEnabled} = useFeedbacks()
 
     return (
         <NavSidebarGroup direction={`horizontal`} shrink={shouldShrink}>
@@ -118,7 +119,7 @@ function NavSidebarBottomMenu({shouldShrink}) {
             </NavSidebarGroupItem>
 
             {!shouldShrink && (
-                <NavSidebarGroupItem visible={canHaveAnimatedCursor}>
+                <NavSidebarGroupItem visible={isAnimatedCursorEnabled()}>
                     <CursorToggleButton/>
                 </NavSidebarGroupItem>
             )}

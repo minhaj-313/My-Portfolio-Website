@@ -3,16 +3,16 @@ import React, {useState} from 'react'
 import {useLanguage} from "/src/providers/LanguageProvider.jsx"
 import {useGlobalState} from "/src/providers/GlobalStateProvider.jsx"
 import FaIcon from "/src/components/generic/FaIcon.jsx"
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
+import {useFeedbacks} from "/src/providers/FeedbacksProvider.jsx"
 
 function NavPills({ sections }) {
     const {setActiveSection, isSectionActive} = useGlobalState()
-    const {ongoingActivities} = useLayout()
+    const {isShowingSpinner} = useFeedbacks()
 
     const [clickedPillSectionId, setClickedPillSectionId] = useState(null)
 
     const _isActive = (section) => {
-        if(ongoingActivities.length)
+        if(isShowingSpinner())
             return false
 
         if(clickedPillSectionId)

@@ -46,10 +46,8 @@ export const useEmails = () => {
                 _status.config['templateId'],
                 params
             )
-            console.log('SUCCESS!', response.status, response.text)
             return true
         } catch (error) {
-            console.error('FAILED...', error)
             return false
         }
     }

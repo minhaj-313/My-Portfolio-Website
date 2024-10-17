@@ -2,11 +2,11 @@ import "./StatusMessage.scss"
 import React from 'react'
 import {Card, CardBody} from "react-bootstrap"
 import CircleAvatar from "/src/components/generic/CircleAvatar.jsx"
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
 import {useUtils} from "/src/helpers/utils.js"
+import {useWindow} from "/src/providers/WindowProvider.jsx"
 
 function StatusMessage({title, message, faIcon, type}) {
-    const {isBreakpoint} = useLayout()
+    const {isBreakpoint} = useWindow()
     const utils = useUtils()
 
     let fallbackIconColors = null

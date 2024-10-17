@@ -1,14 +1,15 @@
 import "./ActivitySpinner.scss"
 import React from 'react'
 import {useUtils} from "/src/helpers/utils.js"
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
+import {useFeedbacks} from "/src/providers/FeedbacksProvider.jsx"
 
 function ActivitySpinner() {
     const utils = useUtils()
-    const {ongoingActivities} = useLayout()
+    const {listSpinnerActivities} = useFeedbacks()
 
-    const visible = ongoingActivities.length > 0
-    const message = ongoingActivities.length > 0 ? ongoingActivities[0].message : null
+    const activities = listSpinnerActivities()
+    const visible = activities.length > 0
+    const message = activities.length > 0 ? activities[0].message : null
 
     return (
         <>

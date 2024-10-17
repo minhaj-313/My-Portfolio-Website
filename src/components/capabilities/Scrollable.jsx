@@ -4,13 +4,13 @@ import Scrollbar from 'smooth-scrollbar'
 import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll'
 
 import {useUtils} from "/src/helpers/utils.js"
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
+import {useWindow} from "/src/providers/WindowProvider.jsx"
 
 Scrollbar.use(OverscrollPlugin)
 
 function Scrollable({ children, id, scrollEnabled, scrollActive }) {
     const utils = useUtils()
-    const {isMobileLayout} = useLayout()
+    const {isMobileLayout} = useWindow()
     const [pluginScrollbar, setPluginScrollbar] = useState(null)
     const canPluginScroll = pluginScrollbar && pluginScrollbar.limit.y > 0
 

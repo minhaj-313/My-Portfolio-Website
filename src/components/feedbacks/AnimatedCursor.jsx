@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react'
 import FaIcon from "/src/components/generic/FaIcon.jsx"
 import Tooltip from "/src/components/generic/Tooltip.jsx"
 import {useUtils} from "/src/helpers/utils.js"
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
+import {useFeedbacks} from "/src/providers/FeedbacksProvider.jsx"
 
 const CIRCLE_SIZE_IN_PIXELS = 75
 const MIN_OPACITY = 0.1
@@ -22,8 +22,8 @@ const TARGET_CLASSES = [
 const utils = useUtils()
 
 function AnimatedCursor() {
-    const {animatedCursorEnabled, canHaveAnimatedCursor, hasModalOpened} = useLayout()
-    const enabled = animatedCursorEnabled && canHaveAnimatedCursor
+    const {isAnimatedCursorEnabled, isAnimatedCursorActive, isModalOpen} = useFeedbacks()
+    const enabled = isAnimatedCursorEnabled() && isAnimatedCursorActive()
 
     const [targetX, setTargetX] = useState(0)
     const [targetY, setTargetY] = useState(0)
@@ -39,10 +39,10 @@ function AnimatedCursor() {
     }, [])
 
     useEffect(() => {
-        if(hasModalOpened()) {
+        if(isModalOpen()) {
             setHoveringDiv(null)
         }
-    }, [hasModalOpened()])
+    }, [isModalOpen()])
 
     const _createListeners = () => {
         if(!enabled)

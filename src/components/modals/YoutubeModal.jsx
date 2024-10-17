@@ -1,10 +1,10 @@
 import "./YoutubeModal.scss"
 import React from 'react'
 import {Modal, ModalWindow, ModalHeader, ModalBody, ModalFooter} from "/src/components/modals/Modal.jsx"
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
+import {useFeedbacks} from "/src/providers/FeedbacksProvider.jsx"
 
 function YoutubeModal() {
-    const {displayingYoutubeVideo, setDisplayingYoutubeVideo} = useLayout()
+    const {displayingYoutubeVideo, hideYoutubeVideo} = useFeedbacks()
 
     let url = null
 
@@ -19,7 +19,7 @@ function YoutubeModal() {
     }
 
     const _close = () => {
-        setDisplayingYoutubeVideo(false)
+        hideYoutubeVideo()
     }
 
     return (

@@ -3,11 +3,11 @@ import Article from "/src/components/wrappers/Article.jsx"
 import {Col, Row} from "react-bootstrap"
 import {useParser} from "/src/helpers/parser.js"
 import {useScheduler} from "/src/helpers/scheduler.js"
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
 import Categorizable from "/src/components/capabilities/Categorizable.jsx"
 import Expandable from "/src/components/capabilities/Expandable.jsx"
 import ProjectCard from "/src/components/generic/ProjectCard.jsx"
 import {useLanguage} from "/src/providers/LanguageProvider.jsx"
+import {useWindow} from "/src/providers/WindowProvider.jsx"
 
 const AnimationStatus = {
     INVISIBLE: "invisible",
@@ -18,7 +18,7 @@ const AnimationStatus = {
 function ArticlePortfolio({ data }) {
     const parser = useParser()
     const scheduler = useScheduler()
-    const {isBreakpoint} = useLayout()
+    const {isBreakpoint} = useWindow()
     const {selectedLanguageId} = useLanguage()
 
     const parsedData = parser.parseArticleData(data)

@@ -1,15 +1,15 @@
 import "./NavPillsFixed.scss"
 import React from 'react'
 import {useUtils} from "/src/helpers/utils.js"
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
 import {useData} from "/src/providers/DataProvider.jsx"
 import {useGlobalState} from "/src/providers/GlobalStateProvider.jsx"
 import NavPills from "/src/components/nav/mobile/NavPills.jsx"
+import {useWindow} from "/src/providers/WindowProvider.jsx"
 
 function NavPillsFixed() {
     const {getActiveCategory, fixedNavigationEnabled} = useGlobalState()
     const {getCategorySections} = useData()
-    const {scrollY, isBreakpoint} = useLayout()
+    const {scrollY, isBreakpoint} = useWindow()
     const utils = useUtils()
 
     const activeCategory = getActiveCategory()

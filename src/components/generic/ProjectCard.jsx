@@ -2,31 +2,25 @@ import "./ProjectCard.scss"
 import React from 'react'
 import CircleAvatar from "/src/components/generic/CircleAvatar.jsx"
 import {Card, CardBody} from "react-bootstrap"
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
 import Tags from "/src/components/generic/Tags.jsx"
 import CircularButtonList from "/src/components/generic/CircularButtonList.jsx"
+import {useWindow} from "/src/providers/WindowProvider.jsx"
+import {useFeedbacks} from "/src/providers/FeedbacksProvider.jsx"
 
 function ProjectCard({className, img, fallbackIcon, fallbackIconColors, title, subtitle, text, links, options, tags}) {
-    const {isBreakpoint, setDisplayingYoutubeVideo, setDisplayingGallery} = useLayout()
+    const {displayYoutubeVideo, displayGallery} = useFeedbacks()
+    const {isBreakpoint} = useWindow()
 
     const hasLinks = Boolean(links && links.length)
 
     const _onOptionClicked = (option) => {
         switch (option.id) {
             case "youtube":
-                setDisplayingYoutubeVideo({
-                    url: option.target,
-                    title: title,
-                    description: text
-                })
+                displayYoutubeVideo(option.target, title, text)
                 break
 
             case "gallery":
-                setDisplayingGallery({
-                    screenshots: option.target,
-                    title: title,
-                    description: text
-                })
+                displayGallery(option.target.images || [], option.target.aspectRatio, title, text)
                 break
         }
     }

@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import {useLanguage} from "/src/providers/LanguageProvider.jsx"
 import Article from "/src/components/wrappers/Article.jsx"
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
 import ActivityList from "/src/components/generic/ActivityList.jsx"
 import {useParser} from "/src/helpers/parser.js"
+import {useWindow} from "/src/providers/WindowProvider.jsx"
 
 function ArticleList({ data }) {
     const parser = useParser()
@@ -11,7 +11,7 @@ function ArticleList({ data }) {
     const items = parsedData.items
 
     const {selectedLanguageId} = useLanguage()
-    const {isMobileLayout} = useLayout()
+    const {isMobileLayout} = useWindow()
     const [listItems, setListItems] = useState([])
 
     const hasProgressItem = parser.hasAnyItemWithValue(items)

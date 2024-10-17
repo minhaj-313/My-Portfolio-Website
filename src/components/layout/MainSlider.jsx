@@ -1,12 +1,12 @@
 import "./MainSlider.scss"
 import React from 'react'
 import {useData} from "/src/providers/DataProvider.jsx"
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
 import Section from "/src/components/layout/Section.jsx"
+import {useWindow} from "/src/providers/WindowProvider.jsx"
 
 function MainSlider() {
     const {getSections} = useData()
-    const {hasFooterOffset} = useLayout()
+    const {hasFooterOffset} = useWindow()
 
     const sections = getSections()
     const addOnClassList = hasFooterOffset() ? `sections-slider-offset-bottom ` : ``

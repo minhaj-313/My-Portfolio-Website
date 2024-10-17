@@ -6,7 +6,7 @@ import FilterTabs from "/src/components/generic/FilterTabs.jsx"
 function Categorizable({ children, items, categories, storageId, onFilter, controlsClass }) {
     const {getString, getTranslation} = useLanguage()
 
-    const [selectedCategoryId, setSelectedCategoryId] = useState( null)
+    const [selectedCategoryId, setSelectedCategoryId] = useState(null)
 
     const tabsCategories = [
         {

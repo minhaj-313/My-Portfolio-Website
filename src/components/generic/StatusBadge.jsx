@@ -2,13 +2,13 @@ import "./StatusBadge.scss"
 import React, {useEffect, useState} from 'react'
 import Tooltip from "/src/components/generic/Tooltip.jsx"
 import {useUtils} from "/src/helpers/utils.js"
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
 import {useScheduler} from "/src/helpers/scheduler.js"
+import {useWindow} from "/src/providers/WindowProvider.jsx"
 
 function StatusBadge({ available, message, smallMode }) {
     const utils = useUtils()
     const scheduler = useScheduler()
-    const {getBreakpoint} = useLayout()
+    const {getBreakpoint} = useWindow()
     const isTouchScreen = utils.isTouchDevice()
 
     const [customClass, setCustomClass] = useState('')

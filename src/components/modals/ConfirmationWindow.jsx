@@ -1,19 +1,19 @@
 import "./ConfirmationWindow.scss"
 import React, {useEffect, useState} from 'react'
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
 import {Modal, ModalWindow, ModalHeader, ModalBody} from "/src/components/modals/Modal.jsx"
 import FaIcon from "/src/components/generic/FaIcon.jsx"
+import {useFeedbacks} from "/src/providers/FeedbacksProvider.jsx"
 
 function ConfirmationWindow() {
-    const {pendingConfirmation, setPendingConfirmation} = useLayout()
+    const {pendingConfirmation, hideConfirmationDialog} = useFeedbacks()
 
     const _confirm = () => {
-        pendingConfirmation.confirmationCallback()
+        pendingConfirmation.onConfirm()
         _close()
     }
 
     const _close = () => {
-        setPendingConfirmation(false)
+        hideConfirmationDialog()
     }
 
     return (
@@ -34,13 +34,13 @@ function ConfirmationWindow() {
                             </div>
 
                             <div className={`confirmation-window-buttons`}>
-                                <button className={`btn btn-secondary text-4`} onClick={_close} data-tooltip={pendingConfirmation.cancelLabel}>
+                                <button className={`btn btn-secondary text-4`} onClick={_close} data-tooltip={pendingConfirmation.cancelButtonLabel}>
                                     <FaIcon iconName={`fa-solid fa-xmark me-2`}/>
-                                    <span>{pendingConfirmation.cancelLabel}</span>
+                                    <span>{pendingConfirmation.cancelButtonLabel}</span>
                                 </button>
 
-                                <button className={`btn btn-highlight text-4`} onClick={_confirm} data-tooltip={pendingConfirmation.confirmLabel}>
-                                    <span>{pendingConfirmation.confirmLabel}</span>
+                                <button className={`btn btn-highlight text-4`} onClick={_confirm} data-tooltip={pendingConfirmation.confirmButtonLabel}>
+                                    <span>{pendingConfirmation.confirmButtonLabel}</span>
                                     <FaIcon iconName={`fa-solid fa-caret-right ms-2`}/>
                                 </button>
                             </div>

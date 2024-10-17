@@ -3,14 +3,16 @@ import React from 'react'
 import {Card, CardBody, CardFooter} from "react-bootstrap"
 import CircleAvatar from "/src/components/generic/CircleAvatar.jsx"
 import {useUtils} from "/src/helpers/utils.js"
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
 import InfoBadge from "/src/components/generic/InfoBadge.jsx"
 import ToolButton from "/src/components/generic/ToolButton.jsx"
 import {useLanguage} from "/src/providers/LanguageProvider.jsx"
+import {useWindow} from "/src/providers/WindowProvider.jsx"
+import {useFeedbacks} from "/src/providers/FeedbacksProvider.jsx"
 
 function InfoCard({title, text, img, fallbackIcon, fallbackIconColors, dateInterval, href, hrefLabel}) {
     const utils = useUtils()
-    const {isBreakpoint, setPendingConfirmation} = useLayout()
+    const {showConfirmationDialog} = useFeedbacks()
+    const {isBreakpoint} = useWindow()
     const {getString} = useLanguage()
 
     title = title || ''
@@ -20,15 +22,15 @@ function InfoCard({title, text, img, fallbackIcon, fallbackIconColors, dateInter
         if(!href)
             return
 
-        setPendingConfirmation({
-            title: hrefLabel,
-            message: getString('leaving_site').replace('$url', utils.limitTextSize(href, 50)),
-            cancelLabel: getString('cancel'),
-            confirmLabel: getString('proceed'),
-            confirmationCallback: () => {
+        showConfirmationDialog(
+            hrefLabel,
+            getString('leaving_site').replace('$url', utils.limitTextSize(href, 50)),
+            getString('cancel'),
+            getString('proceed'),
+            () => {
                 window.open(href, '_blank')
             }
-        })
+        )
     }
 
     return (

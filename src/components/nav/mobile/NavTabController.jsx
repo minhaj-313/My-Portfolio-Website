@@ -1,16 +1,17 @@
 import "./NavTabController.scss"
 import React, {useEffect, useState} from 'react'
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
 import {useData} from "/src/providers/DataProvider.jsx"
 import {useLanguage} from "/src/providers/LanguageProvider.jsx"
 import {useGlobalState} from "/src/providers/GlobalStateProvider.jsx"
 import FaIcon from "/src/components/generic/FaIcon.jsx"
+import {useWindow} from "/src/providers/WindowProvider.jsx"
+import {useFeedbacks} from "/src/providers/FeedbacksProvider.jsx"
 
 function NavTabController() {
     const {isCategoryActive, setActiveSectionFromCategory} = useGlobalState()
     const {getCategories} = useData()
-    const {hasFooterOffset, isMobileLayout, ongoingActivities} = useLayout()
-
+    const {isShowingSpinner} = useFeedbacks()
+    const {hasFooterOffset, isMobileLayout} = useWindow()
 
     const categories = getCategories()
     const addOnClass = hasFooterOffset() ? `nav-tab-controller-with-offset` : ``
@@ -18,7 +19,7 @@ function NavTabController() {
     const [clickedTabCategoryId, setClickedTabCategoryId] = useState(null)
 
     const _isActive = (category) => {
-        if(ongoingActivities.length)
+        if(isShowingSpinner())
             return false
 
         if(clickedTabCategoryId)

@@ -2,8 +2,8 @@ import "./InfoGrid.scss"
 import React from 'react'
 import {Col, Row, Card, CardBody} from "react-bootstrap"
 import CircleAvatar from "/src/components/generic/CircleAvatar.jsx"
-import {useLayout} from "/src/providers/LayoutProvider.jsx"
 import ExternalLink from "/src/components/generic/ExternalLink.jsx"
+import {useWindow} from "/src/providers/WindowProvider.jsx"
 
 function InfoGrid({items}) {
     return (
@@ -18,7 +18,7 @@ function InfoGrid({items}) {
 }
 
 function InfoGridItem({item}) {
-    const {isMobileLayout} = useLayout()
+    const {isMobileLayout} = useWindow()
 
     return (
         <Card className={`info-grid-item`}>
