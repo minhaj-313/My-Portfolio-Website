@@ -71,8 +71,13 @@ function Section({ section }) {
         if(transitionClass === TransitionClasses.SHOWN)
             return
 
-        setTransitionClass(TransitionClasses.SHOWING)
-        _changeStateAfterTimeout(TransitionClasses.SHOWN, 30)
+        if(window.didRenderFirstSection) {
+            setTransitionClass(TransitionClasses.SHOWING)
+            _changeStateAfterTimeout(TransitionClasses.SHOWN, 30)
+        }
+        else {
+            setTransitionClass(TransitionClasses.SHOWN)
+        }
     }
 
     const _hideSection = () => {
@@ -91,6 +96,7 @@ function Section({ section }) {
         }, timeInMilliseconds)
 
         setTimeoutId(id)
+        window.didRenderFirstSection = true
     }
 
     return (

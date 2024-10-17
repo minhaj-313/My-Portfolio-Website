@@ -145,7 +145,7 @@ You can add or remove articles from sections by editing the items of the `articl
 {
     "articles": [
         {
-            "component": "ArticleContactList",
+            "component": "ArticleTestimonials",
             "locales": {},
             "items": []
         },
