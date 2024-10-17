@@ -1,0 +1,30 @@
+#gallery-modal {
+    .gallery-swiper {
+        width: 100%;
+        height: 100%;
+        height: calc(100svh - 40px);
+    }
+
+    .swiper-slide {
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .swiper-slide-portrait {
+        .swiper-zoom-container {
+            height: calc(100% - 40px);
+            max-height: calc(100vw*1.77);
+        }
+    }
+
+    .swiper-slide-landscape {
+        $height: min(calc(100vh - 60px), calc((100vw - 20px)/1.77));
+        .swiper-zoom-container {
+            width: calc($height*1.77);
+            height: $height;
+            padding-bottom: 10px;
+        }
+    }
+}
