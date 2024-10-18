@@ -3,10 +3,16 @@ body {
     touch-action: manipulation;
     width: 100%;
     background-color: $loader-background-color;
-
     @include media-breakpoint-up($sidebar-min-breakpoint) {
-        position: fixed;
+        position: fixed!important;
         overflow-y: hidden!important;
+    }
+}
+
+.body-android {
+    @include media-breakpoint-up($sidebar-min-breakpoint) {
+        position: relative!important;
+        overflow-y: auto!important;
     }
 }
 

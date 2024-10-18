@@ -12,6 +12,11 @@
         max-width: 300vh;
     }
 
+    .swiper-wrapper {
+        display: flex;
+        align-items: center;
+    }
+
     .gallery-swiper-no-bullets {
         span.swiper-pagination-bullet {
             display: none;

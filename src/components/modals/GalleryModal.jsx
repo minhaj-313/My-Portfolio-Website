@@ -26,7 +26,7 @@ function GalleryModal({ displayingGallery, hideGallery }) {
     const [images, setImages] = useState(null)
     const [aspectRatio, setAspectRatio] = useState(null)
     const tag = 'gallery'
-    const direction = aspectRatio === '16:9' && !isBreakpoint('xl') ? 'vertical' : 'horizontal'
+    const direction = aspectRatio === '16:9' && !isBreakpoint('xl') && !utils.isAndroid() ? 'vertical' : 'horizontal'
 
     useEffect(() => {
         if(!displayingGallery)

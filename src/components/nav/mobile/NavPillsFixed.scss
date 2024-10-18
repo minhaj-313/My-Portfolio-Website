@@ -17,4 +17,8 @@
     @include media-breakpoint-up($sidebar-min-breakpoint) {
         display: none;
     }
+
+    @media (max-height:400px) {
+        display: none;
+    }
 }

@@ -26,6 +26,10 @@
         margin: 2rem 0.5rem 0.5rem;
     }
 
+    @media (max-height: 500px) {
+        margin-top: 0.5rem;
+    }
+
     overflow: hidden;
     .card-header, .card-footer {
         padding: 1rem;

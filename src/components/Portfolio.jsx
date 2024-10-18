@@ -6,10 +6,18 @@ import NavHeaderMobile from "/src/components/nav/mobile/NavHeaderMobile.jsx"
 import NavTabController from "/src/components/nav/mobile/NavTabController.jsx"
 import NavPillsFixed from "/src/components/nav/mobile/NavPillsFixed.jsx"
 import {useGlobalState} from "/src/providers/GlobalStateProvider.jsx"
+import {useUtils} from "/src/helpers/utils.js"
 
 function Portfolio() {
     const {getActiveSection, setFixedNavigationEnabled} = useGlobalState()
     const [isFirstPage, setIsFirstPage] = useState(true)
+    const utils = useUtils()
+
+    useEffect(() => {
+        if(utils.isTouchDevice() && utils.isAndroid()) {
+            utils.addClassToBody('body-android')
+        }
+    }, [])
 
     /** Force scroll to top every time the active section changes... **/
     useEffect(() => {
