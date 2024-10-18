@@ -21,6 +21,7 @@ import FullScreenToggleButton from "/src/components/widgets/FullScreenToggleButt
 import {useData} from "/src/providers/DataProvider.jsx"
 import FaIcon from "/src/components/generic/FaIcon.jsx"
 import {useWindow} from "/src/providers/WindowProvider.jsx"
+import {useScheduler} from "/src/helpers/scheduler.js"
 
 const TransitionClasses = {
     HIDDEN: 'section-transition-hidden',
@@ -43,13 +44,13 @@ const ARTICLES = {
 }
 
 const utils = useUtils()
+const scheduler = useScheduler()
 
 function Section({ section }) {
     const {getSettings} = useData()
     const {isSectionActive, didRenderFirstSection, setDidRenderFirstSection} = useGlobalState()
-    const {isBreakpoint, isMobileLayout} = useWindow()
+    const {isBreakpoint, isMobileLayout, focusMainView} = useWindow()
     const [transitionClass, setTransitionClass] = useState(TransitionClasses.HIDDEN)
-    const [timeoutId, setTimeoutId] = useState(-1)
 
     const settings = getSettings()
     const scrollableEnabled = !isMobileLayout() && !utils.isTouchDevice()
@@ -90,13 +91,11 @@ function Section({ section }) {
     }
 
     const _changeStateAfterTimeout = (state, timeInMilliseconds) => {
-        clearTimeout(timeoutId)
+        scheduler.clearAllWithTag('section-' + section.id)
 
-        const id = setTimeout(() => {
+        scheduler.schedule(() => {
             setTransitionClass(state)
-        }, timeInMilliseconds)
-
-        setTimeoutId(id)
+        }, timeInMilliseconds, 'section-' + section.id)
     }
 
     return (

@@ -39,6 +39,7 @@ export const WindowProvider = ({children}) => {
     const _createListeners = () => {
         window.addEventListener('scroll', _onScroll)
         window.addEventListener('resize', _onResize)
+        window.addEventListener('keydown', _onKeyDown)
         _onScroll()
         _onResize()
 
@@ -53,6 +54,7 @@ export const WindowProvider = ({children}) => {
     const _destroyListeners = () => {
         window.removeEventListener('scroll', _onScroll)
         window.removeEventListener('resize', _onResize)
+        window.removeEventListener('keydown', _onKeyDown)
         scheduler.clearAllWithTag('window-provider')
         setDidCreateListeners(false)
     }
@@ -69,6 +71,15 @@ export const WindowProvider = ({children}) => {
 
     const _onTick = () => {
         setCurrentTimeSpan(prevTimer => prevTimer + TIMEOUT_STEP_IN_SECONDS)
+    }
+
+    const _onKeyDown = (event) => {
+        switch (event.key) {
+            case 'ArrowUp':
+            case 'ArrowDown':
+                focusMainView()
+                break
+        }
     }
 
     const isBreakpoint = (breakpoint) => {
@@ -93,6 +104,15 @@ export const WindowProvider = ({children}) => {
         return utils.isIOS() && utils.isChrome()
     }
 
+    const focusMainView = () => {
+        const scrollable = document.querySelector('.custom-scrollable')
+        const modal = document.querySelector('.custom-modal')
+        if(!scrollable || utils.isTouchDevice() || modal)
+            return
+
+        scrollable.focus()
+    }
+
     return (
         <WindowContext.Provider value={{
             scrollX,
@@ -103,7 +123,8 @@ export const WindowProvider = ({children}) => {
             isBreakpoint,
             getBreakpoint,
             isMobileLayout,
-            hasFooterOffset
+            hasFooterOffset,
+            focusMainView
         }}>
             {didCreateListeners && (
                 <>{children}</>

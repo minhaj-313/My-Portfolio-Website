@@ -12,15 +12,15 @@ import Preloader from "/src/components/Preloader.jsx"
 const AppProviders = ({ children }) => (
     <DataProvider>
         <LanguageProvider>
-            <WindowProvider>
-                <FeedbacksProvider>
+            <FeedbacksProvider>
+                <WindowProvider>
                     <ThemeProvider>
                         <GlobalStateProvider>
                             {children}
                         </GlobalStateProvider>
                     </ThemeProvider>
-                </FeedbacksProvider>
-            </WindowProvider>
+                </WindowProvider>
+            </FeedbacksProvider>
         </LanguageProvider>
     </DataProvider>
 )
