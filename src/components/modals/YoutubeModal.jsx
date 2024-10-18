@@ -1,11 +1,8 @@
 import "./YoutubeModal.scss"
 import React from 'react'
 import {Modal, ModalWindow, ModalHeader, ModalBody, ModalFooter} from "/src/components/modals/Modal.jsx"
-import {useFeedbacks} from "/src/providers/FeedbacksProvider.jsx"
 
-function YoutubeModal() {
-    const {displayingYoutubeVideo, hideYoutubeVideo} = useFeedbacks()
-
+function YoutubeModal({displayingYoutubeVideo, hideYoutubeVideo}) {
     let url = null
 
     if(displayingYoutubeVideo) {

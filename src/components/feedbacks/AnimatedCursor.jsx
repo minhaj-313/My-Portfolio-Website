@@ -3,7 +3,6 @@ import React, {useEffect, useState} from 'react'
 import FaIcon from "/src/components/generic/FaIcon.jsx"
 import Tooltip from "/src/components/generic/Tooltip.jsx"
 import {useUtils} from "/src/helpers/utils.js"
-import {useFeedbacks} from "/src/providers/FeedbacksProvider.jsx"
 
 const CIRCLE_SIZE_IN_PIXELS = 75
 const MIN_OPACITY = 0.1
@@ -21,9 +20,8 @@ const TARGET_CLASSES = [
 
 const utils = useUtils()
 
-function AnimatedCursor() {
-    const {isAnimatedCursorEnabled, isAnimatedCursorActive, isModalOpen} = useFeedbacks()
-    const enabled = isAnimatedCursorEnabled() && isAnimatedCursorActive()
+function AnimatedCursor({enabled, active, modalOpen }) {
+    const willRender = enabled && active
 
     const [targetX, setTargetX] = useState(0)
     const [targetY, setTargetY] = useState(0)
@@ -39,13 +37,13 @@ function AnimatedCursor() {
     }, [])
 
     useEffect(() => {
-        if(isModalOpen()) {
+        if(modalOpen) {
             setHoveringDiv(null)
         }
-    }, [isModalOpen()])
+    }, [modalOpen])
 
     const _createListeners = () => {
-        if(!enabled)
+        if(!willRender)
             return
 
         window.addEventListener("mousedown", _onMouseDown)
@@ -96,7 +94,7 @@ function AnimatedCursor() {
 
     return (
         <>
-            {enabled && (
+            {willRender && (
                 <div className={`animated-cursor`}>
                     <AnimatedCursorCircle targetX={targetX}
                                           targetY={targetY}

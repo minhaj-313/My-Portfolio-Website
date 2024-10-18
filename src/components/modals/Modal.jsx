@@ -93,11 +93,15 @@ function ModalCloseButton({color, onClose}) {
     const {getString} = useLanguage()
     color = color || 'dark'
 
+    const _onButtonClicked = () => {
+        onClose()
+    }
+
     return (
         <ToolButton icon={`fa-solid fa-xmark`}
                     className={`close-button`}
                     size={2}
-                    onClick={onClose}
+                    onClick={_onButtonClicked}
                     color={color}
                     tooltip={getString('close')}/>
     )

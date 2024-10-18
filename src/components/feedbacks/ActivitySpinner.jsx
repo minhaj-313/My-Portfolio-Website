@@ -3,11 +3,9 @@ import React from 'react'
 import {useUtils} from "/src/helpers/utils.js"
 import {useFeedbacks} from "/src/providers/FeedbacksProvider.jsx"
 
-function ActivitySpinner() {
+function ActivitySpinner({activities}) {
     const utils = useUtils()
-    const {listSpinnerActivities} = useFeedbacks()
 
-    const activities = listSpinnerActivities()
     const visible = activities.length > 0
     const message = activities.length > 0 ? activities[0].message : null
 

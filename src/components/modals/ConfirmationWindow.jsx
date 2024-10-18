@@ -2,11 +2,8 @@ import "./ConfirmationWindow.scss"
 import React, {useEffect, useState} from 'react'
 import {Modal, ModalWindow, ModalHeader, ModalBody} from "/src/components/modals/Modal.jsx"
 import FaIcon from "/src/components/generic/FaIcon.jsx"
-import {useFeedbacks} from "/src/providers/FeedbacksProvider.jsx"
 
-function ConfirmationWindow() {
-    const {pendingConfirmation, hideConfirmationDialog} = useFeedbacks()
-
+function ConfirmationWindow({pendingConfirmation, hideConfirmationDialog}) {
     const _confirm = () => {
         pendingConfirmation.onConfirm()
         _close()

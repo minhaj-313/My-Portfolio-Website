@@ -3,10 +3,8 @@ import React, {useEffect, useState} from 'react'
 import {Card, CardBody, CardHeader} from "react-bootstrap"
 import FaIcon from "/src/components/generic/FaIcon.jsx"
 import {useScheduler} from "/src/helpers/scheduler.js"
-import {useFeedbacks} from "/src/providers/FeedbacksProvider.jsx"
 
-function Notifications() {
-    const {displayingNotification, killNotification} = useFeedbacks()
+function Notifications({displayingNotification, killNotification}) {
     const scheduler = useScheduler()
     const schedulerTag = 'notifications'
 
@@ -57,7 +55,7 @@ function Notifications() {
                                 <span>{displayingNotification.title}</span>
                             </h6>
 
-                            <button className={`hide-button`} onClick={_onCloseButton}>
+                            <button className={`hide-button ps-1`} onClick={_onCloseButton}>
                                 <FaIcon iconName={`fa-solid fa-xmark`}/>
                             </button>
                         </CardHeader>

@@ -26,16 +26,57 @@ function App() {
 }
 
 function AppFeedbacks() {
-    const {listSpinnerActivities, isAnimatedCursorEnabled, displayingNotification, displayingYoutubeVideo, displayingGallery, pendingConfirmation} = useFeedbacks()
+    const {
+        listSpinnerActivities,
+        isAnimatedCursorEnabled,
+        isAnimatedCursorActive,
+        isModalOpen,
+        displayingNotification,
+        killNotification,
+        displayingYoutubeVideo,
+        hideYoutubeVideo,
+        displayingGallery,
+        hideGallery,
+        pendingConfirmation,
+        hideConfirmationDialog
+    } = useFeedbacks()
+
+
+    const spinnerActivities = listSpinnerActivities()
+    const animatedCursorEnabled = isAnimatedCursorEnabled()
+    const animatedCursorActive = isAnimatedCursorActive()
+    const modalOpen = isModalOpen()
 
     return (
         <>
-            {listSpinnerActivities() && (<ActivitySpinner/>)}
-            {isAnimatedCursorEnabled() && (<AnimatedCursor/>)}
-            {displayingNotification && (<Notifications/>)}
-            {displayingYoutubeVideo && (<YoutubeModal/>)}
-            {displayingGallery && (<GalleryModal/>)}
-            {pendingConfirmation && (<ConfirmationWindow/>)}
+            {spinnerActivities && (
+                <ActivitySpinner activities={spinnerActivities}/>
+            )}
+
+            {isAnimatedCursorEnabled() && (
+                <AnimatedCursor enabled={animatedCursorEnabled}
+                                active={animatedCursorActive}
+                                modalOpen={modalOpen}/>
+            )}
+
+            {displayingNotification && (
+                <Notifications displayingNotification={displayingNotification}
+                               killNotification={killNotification}/>
+            )}
+
+
+            <YoutubeModal   displayingYoutubeVideo={displayingYoutubeVideo}
+                            hideYoutubeVideo={hideYoutubeVideo}/>
+
+
+
+            <GalleryModal   displayingGallery={displayingGallery}
+                            hideGallery={hideGallery}/>
+
+
+
+            <ConfirmationWindow pendingConfirmation={pendingConfirmation}
+                                hideConfirmationDialog={hideConfirmationDialog}/>
         </>
     )
 }

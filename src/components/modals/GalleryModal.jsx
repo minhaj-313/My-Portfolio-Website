@@ -17,8 +17,8 @@ const RATIO_CLASSES = {
     "9:16": "swiper-slide-portrait",
 }
 
-function GalleryModal() {
-    const {showActivitySpinner, hideActivitySpinner, displayingGallery, hideGallery} = useFeedbacks()
+function GalleryModal({ displayingGallery, hideGallery }) {
+    const {showActivitySpinner, hideActivitySpinner} = useFeedbacks()
     const utils = useUtils()
     const scheduler = useScheduler()
     const {isBreakpoint} = useWindow()
