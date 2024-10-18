@@ -22,7 +22,7 @@ function Portfolio() {
     /** Force scroll to top every time the active section changes... **/
     useEffect(() => {
         const __first = isFirstPage
-        const top = 263
+        const top = 258
         const scrollParams = {top: top, behavior: 'instant'}
         setIsFirstPage(false)
         if(__first || window.scrollY < top)

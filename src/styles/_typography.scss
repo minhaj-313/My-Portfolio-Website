@@ -10,6 +10,15 @@ $heading-sizes: (
 
 /** Standard Texts **/
 $text-sizes: (
+    text-1: (default: 0.85rem, xl: 0.81rem, lg: 0.77rem, md: 0.72rem, sm: 0.70rem),
+    text-2: (default: 0.90rem, xl: 0.86rem, lg: 0.81rem, md: 0.77rem, sm: 0.75rem),
+    text-3: (default: 0.95rem, xl: 0.90rem, lg: 0.86rem, md: 0.81rem, sm: 0.80rem),
+    text-4: (default: 1.00rem, xl: 0.95rem, lg: 0.90rem, md: 0.85rem, sm: 0.85rem),
+    text-5: (default: 1.05rem, xl: 1.00rem, lg: 0.95rem, md: 0.89rem, sm: 0.90rem),
+);
+
+/** Leads **/
+$lead-sizes: (
     display-1: (default: 3.25rem, xl: 3.09rem, lg: 2.93rem, md: 2.76rem, sm: 2.50rem),
     display-2: (default: 3.50rem, xl: 3.33rem, lg: 3.15rem, md: 2.98rem, sm: 2.70rem),
     display-3: (default: 3.75rem, xl: 3.56rem, lg: 3.38rem, md: 3.19rem, sm: 2.95rem),
@@ -22,12 +31,6 @@ $text-sizes: (
     lead-2: (default: 1.40rem, xl: 1.33rem, lg: 1.26rem, md: 1.19rem, sm: 1.10rem),
     lead-3: (default: 1.75rem, xl: 1.66rem, lg: 1.58rem, md: 1.49rem, sm: 1.35rem),
     lead-4: (default: 2.25rem, xl: 2.14rem, lg: 2.03rem, md: 1.91rem, sm: 1.85rem),
-
-    text-1: (default: 0.85rem, xl: 0.81rem, lg: 0.77rem, md: 0.72rem, sm: 0.70rem),
-    text-2: (default: 0.90rem, xl: 0.86rem, lg: 0.81rem, md: 0.77rem, sm: 0.75rem),
-    text-3: (default: 0.95rem, xl: 0.90rem, lg: 0.86rem, md: 0.81rem, sm: 0.80rem),
-    text-4: (default: 1.00rem, xl: 0.95rem, lg: 0.90rem, md: 0.85rem, sm: 0.85rem),
-    text-5: (default: 1.05rem, xl: 1.00rem, lg: 0.95rem, md: 0.89rem, sm: 0.90rem),
 );
 
 @each $text, $size in $text-sizes {
@@ -62,6 +65,28 @@ $text-sizes: (
 
         @include media-breakpoint-down(md) {
             font-size: map-get($size, md)!important;
+        }
+    }
+}
+
+@each $text, $size in $lead-sizes {
+    .#{$text} {
+        font-size: map-get($size, default)!important;
+
+        @include media-breakpoint-down(xl) {
+            font-size: map-get($size, xl)!important;
+        }
+
+        @include media-breakpoint-down(lg) {
+            font-size: map-get($size, lg)!important;
+        }
+
+        @include media-breakpoint-down(md) {
+            font-size: map-get($size, md)!important;
+        }
+
+        @include media-breakpoint-down(sm) {
+            font-size: map-get($size, sm)!important;
         }
     }
 }

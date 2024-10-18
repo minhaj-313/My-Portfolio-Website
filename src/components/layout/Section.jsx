@@ -149,7 +149,7 @@ function SectionHeader({section}) {
                 </div>
             )}
 
-            <h3 className={`fw-bold mx-4 mb-0`}
+            <h3 className={`fw-bold ${isBreakpoint('lg') ? 'lead-4' : ''} mx-4 mb-0`}
                 dangerouslySetInnerHTML={{__html: title}}/>
         </div>
     )

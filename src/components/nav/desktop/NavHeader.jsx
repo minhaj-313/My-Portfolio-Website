@@ -31,7 +31,7 @@ function NavHeader({ shrink }) {
                          message={statusMessage}
                          smallMode={shrink}/>
 
-            <div className={`info mt-3 pt-1 text-center`}>
+            <div className={`info mt-3 text-center`}>
                 <h5 className={`name`}>
                     <ImageView src={logoUrl}
                                alt={`logo`}
