@@ -18,8 +18,11 @@ function NavHeader({ shrink }) {
     const role = utils.parseJsonText(getTranslation(profile["locales"], "role"))
     const pfpUrl = utils.resolvePath(profile["profilePictureUrl"])
     const logoUrl = utils.resolvePath(profile["logoUrl"])
-    const statusAvailable = profile['statusAvailable']
-    const statusMessage = getTranslation(profile['locales'], 'status')
+
+    const status = settings.status
+    const statusVisible = status['visible']
+    const statusAvailable = status['available']
+    const statusMessage = getTranslation(status['locales'], 'message')
 
     return (
         <header className={`nav-header ${shrink ? "nav-header-shrink" : ""}`}>
@@ -27,9 +30,11 @@ function NavHeader({ shrink }) {
                        className={`img-view-avatar`}
                        alt={name}/>
 
-            <StatusBadge available={statusAvailable}
+            {statusVisible && (
+                <StatusBadge available={statusAvailable}
                          message={statusMessage}
                          smallMode={shrink}/>
+            )}
 
             <div className={`info mt-3 text-center`}>
                 <h5 className={`name`}>
