@@ -33,7 +33,7 @@
 
 .status-circle-active {
     background-color: var(--theme-highlight)!important;
-    border: 2px solid rgba($secondary, 0.3);
+    border: 2px solid var(--theme-dark-opacity);
     &-pulse {
         background-color: var(--theme-highlight-3)!important;
     }
