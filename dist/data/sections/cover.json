@@ -419,34 +419,6 @@
                     }
                 }
             ]
-        },
-
-        {
-            "id": "about_template",
-            "component": "ArticleInfoBlock",
-            "config": {},
-            "locales": {
-                "en": {"title": "**About** the template"},
-                "es": {"title": "**Acerca de** la plantilla"},
-                "fr": {"title": "**À propos** du modèle"},
-                "ko": {"title": "템플릿에 **대하여**"}
-            },
-
-            "items": [
-                {
-                    "icon": {
-                        "img": null,
-                        "fa": "fa-solid fa-face-smile-wink",
-                        "faColors": {"bg": null, "fill": null}
-                    },
-                    "locales": {
-                        "en": {"text": "<p>This template was created by and is maintained by <b><a href='https://github.com/ryanbalieiro'>Ryan Balieiro</a></b>. It has been published under the MIT license – providing complete freedom for utilization.</p><p>Feel free to enhance and adapt it to suit your needs! \uD83D\uDE03</p>"},
-                        "es": {"text": "<p>Esta plantilla fue creada y es mantenida por <b><a href='https://github.com/ryanbalieiro'>Ryan Balieiro</a></b>. Ha sido publicada bajo la licencia MIT, lo que brinda total libertad para su uso.</p><p>Siéntase libre de mejorarla y adaptarla a sus necesidades! \uD83D\uDE03</p>"},
-                        "fr": {"text": "<p>Ce modèle a été créé et est maintenu par <b><a href='https://github.com/ryanbalieiro'>Ryan Balieiro</a></b>. Il est publié sous la licence MIT, offrant une totale liberté d'utilisation.</p><p>N'hésitez pas à l'améliorer et l'adapter à vos besoins! \uD83D\uDE03</p>"},
-                        "ko": {"text": "<p>이 템플릿은 <b><a href='https://github.com/ryanbalieiro'>Ryan Balieiro</a></b>에 의해 생성되고 유지 관리됩니다. MIT 라이선스로 배포되어 자유롭게 사용할 수 있습니다.</p><p>필요에 따라 자유롭게 개선하고 조정하세요! \uD83D\uDE03</p>"}
-                    }
-                }
-            ]
         }
     ]
 }
