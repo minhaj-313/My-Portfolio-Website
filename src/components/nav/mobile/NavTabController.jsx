@@ -27,7 +27,20 @@ function NavTabController() {
         return isCategoryActive(category.id)
     }
 
-    const _setActive = (category) => {
+    const _onCategoryTabClicked = (category) => {
+        if(isCategoryActive(category.id)) {
+            _onActiveCategoryClicked()
+            return
+        }
+
+        _onCategorySelected(category)
+    }
+
+    const _onActiveCategoryClicked = () => {
+        window.scrollTo(0, 0)
+    }
+
+    const _onCategorySelected = (category) => {
         if(clickedTabCategoryId)
             return
 
@@ -44,7 +57,7 @@ function NavTabController() {
                         <NavTab category={category}
                                 key={key}
                                 active={_isActive(category)}
-                                onClick={_setActive}/>
+                                onClick={_onCategoryTabClicked}/>
                     ))}
                 </div>
             )}
@@ -57,8 +70,7 @@ function NavTab({category, active, onClick}) {
 
     return (
         <button className={`nav-tab-btn ${active ? `nav-tab-btn-active` : ''}`}
-                onClick={() => { onClick(category) }}
-                disabled={active}>
+                onClick={() => { onClick(category) }}>
             <FaIcon iconName={category.faIcon}/>
             <span className={`mb-1`}>{getTranslation(category["locales"], "title")}</span>
         </button>
