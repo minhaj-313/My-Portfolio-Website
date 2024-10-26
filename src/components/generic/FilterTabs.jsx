@@ -1,9 +1,7 @@
 import "./FilterTabs.scss"
-import React from 'react'
+import React, {useState} from 'react'
 import {useLanguage} from "/src/providers/LanguageProvider.jsx"
-import {useUtils} from "/src/helpers/utils.js"
-
-const utils = useUtils()
+import SensitiveButton from "/src/components/generic/SensitiveButton"
 
 function FilterTabs({items, selectedItemId, onSelect}) {
     const _onTabClicked = (item) => {
@@ -38,12 +36,11 @@ function FilterTabButton({item, isSelected, onClick}) {
     }
 
     return (
-        <button data-tooltip={tooltipText}
-                type={`button`}
-                className={`btn btn-primary ${customBtnClass} text-1`}
-                onClick={_onClick}>
+        <SensitiveButton className={`btn btn-primary text-1 ${customBtnClass}`}
+                         onClick={_onClick}
+                         tooltipText={tooltipText}>
             <span>{label}</span>
-        </button>
+        </SensitiveButton>
     )
 }
 

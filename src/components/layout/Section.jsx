@@ -28,6 +28,7 @@ const TransitionClasses = {
     HIDING: 'section-transition-hiding',
     SHOWING: 'section-transition-showing',
     SHOWN: 'section-transition-shown',
+    FORCE_SHOW: 'section-transition-show-without-transition'
 }
 
 const ARTICLES = {
@@ -74,6 +75,7 @@ function Section({ section }) {
 
         if(didRenderFirstSection) {
             setTransitionClass(TransitionClasses.SHOWING)
+            scheduler.clearAllWithTag('section-' + section.id)
             _changeStateAfterTimeout(TransitionClasses.SHOWN, 30)
         }
         else {
@@ -86,13 +88,13 @@ function Section({ section }) {
         if(transitionClass === TransitionClasses.HIDDEN)
             return
 
-        setTransitionClass(TransitionClasses.HIDING)
+        setTransitionClass(TransitionClasses.FORCE_SHOW)
+        scheduler.clearAllWithTag('section-' + section.id)
+        _changeStateAfterTimeout(TransitionClasses.HIDING, 30)
         _changeStateAfterTimeout(TransitionClasses.HIDDEN, 1000)
     }
 
     const _changeStateAfterTimeout = (state, timeInMilliseconds) => {
-        scheduler.clearAllWithTag('section-' + section.id)
-
         scheduler.schedule(() => {
             setTransitionClass(state)
         }, timeInMilliseconds, 'section-' + section.id)

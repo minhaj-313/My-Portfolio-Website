@@ -6,6 +6,7 @@ import {useGlobalState} from "/src/providers/GlobalStateProvider.jsx"
 import FaIcon from "/src/components/generic/FaIcon.jsx"
 import {useWindow} from "/src/providers/WindowProvider.jsx"
 import {useFeedbacks} from "/src/providers/FeedbacksProvider.jsx"
+import SensitiveButton from "/src/components/generic/SensitiveButton.jsx"
 
 function NavTabController() {
     const {isCategoryActive, setActiveSectionFromCategory} = useGlobalState()
@@ -69,11 +70,11 @@ function NavTab({category, active, onClick}) {
     const {getTranslation} = useLanguage()
 
     return (
-        <button className={`nav-tab-btn ${active ? `nav-tab-btn-active` : ''}`}
-                onClick={() => { onClick(category) }}>
+        <SensitiveButton className={`nav-tab-btn ${active ? `nav-tab-btn-active` : ''}`}
+                         onClick={() => { onClick(category) }}>
             <FaIcon iconName={category.faIcon}/>
             <span className={`mb-1`}>{getTranslation(category["locales"], "title")}</span>
-        </button>
+        </SensitiveButton>
     )
 }
 

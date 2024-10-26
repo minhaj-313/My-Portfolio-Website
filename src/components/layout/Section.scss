@@ -81,3 +81,13 @@ div.lead-section-content {
         transition: 0.4s transform ease-in-out;
     }
 }
+
+.section-transition-show-without-transition {
+    z-index: $z-index-section-active;
+
+    transition: none!important;
+    transform: translateX(0);
+    @include media-breakpoint-down($sidebar-min-breakpoint) {
+        transition: 0.4s transform ease-in-out;
+    }
+}

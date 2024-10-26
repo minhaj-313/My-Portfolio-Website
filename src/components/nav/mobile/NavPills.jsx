@@ -4,6 +4,7 @@ import {useLanguage} from "/src/providers/LanguageProvider.jsx"
 import {useGlobalState} from "/src/providers/GlobalStateProvider.jsx"
 import FaIcon from "/src/components/generic/FaIcon.jsx"
 import {useFeedbacks} from "/src/providers/FeedbacksProvider.jsx"
+import SensitiveButton from "/src/components/generic/SensitiveButton.jsx"
 
 function NavPills({ sections }) {
     const {setActiveSection, isSectionActive} = useGlobalState()
@@ -46,12 +47,12 @@ function NavPill({section, active, onClick}) {
     const {getTranslation} = useLanguage()
 
     return (
-        <button disabled={active}
-                className={`nav-pill ${active ? `nav-pill-active` : ''}`}
-                onClick={() => { onClick(section) }}>
+        <SensitiveButton disabled={active}
+                         className={`nav-pill ${active ? `nav-pill-active` : ''}`}
+                         onClick={() => { onClick(section) }}>
             <FaIcon iconName={section.faIcon}/>
             <span>{getTranslation(section.content["locales"], "title")}</span>
-        </button>
+        </SensitiveButton>
     )
 }
 
