@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 import {useData} from "/src/providers/DataProvider.jsx"
 import {useFeedbacks} from "/src/providers/FeedbacksProvider.jsx"
+import {useScheduler} from "/src/helpers/scheduler.js"
 
 const GlobalStateContext = createContext(null)
 export const useGlobalState = () => useContext(GlobalStateContext)
@@ -8,10 +9,9 @@ export const useGlobalState = () => useContext(GlobalStateContext)
 export const GlobalStateProvider = ({children}) => {
     const {getSections, getCategories, getCategorySections} = useData()
     const {showActivitySpinner, hideActivitySpinner} = useFeedbacks()
+    const scheduler = useScheduler()
 
     const [activeSectionId, setActiveSectionId] = useState(null)
-    const [lastSectionChangeTimespan, setLastSectionChangeTimespan] = useState(null)
-    const [sectionChangingTimeoutId, setSectionChangingTimeoutId] = useState(-1)
     const [fixedNavigationEnabled, setFixedNavigationEnabled] = useState(true)
     const [didRenderFirstSection, setDidRenderFirstSection] = useState(false)
 
@@ -20,58 +20,72 @@ export const GlobalStateProvider = ({children}) => {
 
     /** Loaded everything **/
     useEffect(() => {
-        const hash = window.location.hash
-        const hashValue = hash.substring(1)
-        const initialSection = sections.find(section => section.id === hashValue)
-        if(initialSection) {
-            _makeSectionActive(initialSection.id)
-        }
-        else {
-            _makeSectionActive(sections[0].id)
+        window.addEventListener('popstate', _updateSectionFromHash)
+        window.addEventListener('hashchange', _updateSectionFromHash)
+        _updateSectionFromHash()
+
+        return () => {
+            window.removeEventListener('popstate', _updateSectionFromHash)
+            window.removeEventListener('hashchange', _updateSectionFromHash)
         }
     }, [])
 
-    const _makeSectionActive = (sectionId) => {
-        const timespan = new Date().getTime()
-        setLastSectionChangeTimespan(timespan)
-
-        clearTimeout(sectionChangingTimeoutId)
-
-        setActiveSectionId(sectionId)
-        window.location.hash = sectionId
-
-        hideActivitySpinner('section-changing')
-
-        const section = sections.find(section => section.id === sectionId)
-        if(section && section.category) {
-            window.visitHistory = window.visitHistory || []
-            window.visitHistory[section.category.id] = sectionId
-        }
-    }
 
     const setActiveSection = (sectionId) => {
         const section = sections.find(section => section.id === sectionId)
         if(!section)
             return
 
+        _onSectionChange(section)
+    }
+
+    const _updateSectionFromHash = () => {
+        const hash = window.location.hash.substring(1)
+
+        let section = sections.find(section => section.id === hash)
+        if(!section && sections.length) {
+            section = sections[0]
+        }
+
+        _onSectionChange(section)
+    }
+
+    const _onSectionChange = (section) => {
+        if(window.targetSectionId === section.id)
+            return
+
         const timespan = new Date().getTime()
-        const diff = timespan - (lastSectionChangeTimespan || 0)
+        const diff = timespan - (window.lastSectionChangeTimespan || timespan)
         const minWaitingTime = 800
 
         if(diff > minWaitingTime) {
-            _makeSectionActive(sectionId)
+            _makeSectionActive(section)
             return
         }
 
         const waitingTime = Math.max(minWaitingTime - diff, 300)
         showActivitySpinner('section-changing')
-        clearTimeout(sectionChangingTimeoutId)
 
-        setSectionChangingTimeoutId(
-            setTimeout(() => {
-                _makeSectionActive(sectionId)
-            }, waitingTime)
-        )
+        scheduler.clearAllWithTag('section-state')
+        scheduler.schedule(() => {
+            _makeSectionActive(section)
+        }, waitingTime, 'section-state')
+    }
+
+    const _makeSectionActive = (section) => {
+        scheduler.clearAllWithTag('section-state')
+
+        window.lastSectionChangeTimespan = new Date().getTime()
+        window.targetSectionId = section.id
+        window.location.hash = section.id
+        setActiveSectionId(section.id)
+
+        hideActivitySpinner('section-changing')
+
+        if(section.category) {
+            window.visitHistory = window.visitHistory || []
+            window.visitHistory[section.category.id] = section.id
+        }
     }
 
     const getActiveSection = () => {
